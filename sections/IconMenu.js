@@ -3,9 +3,15 @@ import { Ionicons } from "react-native-vector-icons";
 import { LinearGradient } from "expo-linear-gradient"; 
 
 const IconMenu = ({item, navigation}) => {
+
+  const handlePress = () => {
+    item.title === "3 Voted" && navigation.push("Voterecords")
+    item.title === "2 Sponsor" && navigation.push("VotingRecords")
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity activeOpacity={.5} onPress={() => item.title === "3 Voted" && navigation.push("VotingRecords")}>
+      <TouchableOpacity activeOpacity={.5} onPress={() => handlePress(item)}>
         <View key={item.icon} style={styles.box}>
           <View style={styles.LinearView}>
             <LinearGradient

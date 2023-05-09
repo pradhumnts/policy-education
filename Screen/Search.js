@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { View, StyleSheet, TextInput, FlatList } from 'react-native'
+import { View, Text, StyleSheet, TextInput, FlatList } from 'react-native'
 import { Ionicons } from 'react-native-vector-icons';
-import Records from '../sections/Record';
+import Record from '../sections/Record';
 import Card from '../Design System/Card';
 import HeadingComponent from "../Design System/HeadingComponent/HeadingComponent";
 import { ScrollView } from "react-native-gesture-handler";
@@ -66,10 +66,10 @@ const Recorddata = [
 ];
 
 
-const Search = () => {
+const Search = ({ navigation }) => {
 
     const [searchValue, setSearchValue] = useState('');
-    const [filteredRecords, setFilteredRecords] = useState(Recorddata);
+    const [filteredRecords, setFilteredRecords] = useState([]);
 
     const handleSearch = (text) => {
         setSearchValue(text);
@@ -77,7 +77,7 @@ const Search = () => {
     }
 
     return (
-        <View>
+        <View style={{ backgroundColor: "white", flex: 1 }}>
             <View>
                 <HeadingComponent heading="Search" tagline="Find your voice listen to world."/>
             </View>
@@ -94,16 +94,21 @@ const Search = () => {
                 <Ionicons name="options-outline" size={22} color="#a18cd1" />
             </View>
             
-            <Card style={{marginTop:0}}>
-                <View>
-                <FlatList
-                    data={filteredRecords}
-                    renderItem={({ item }) => <Records item={item} />}
+
+                <View style={{ paddingHorizontal: 10 }}>
+                <FlatList showsVerticalScrollIndicator={false}
+                    data={filteredRecords} 
+                    renderItem={({ item }) => <Record navigation={navigation} item={item} />}
                     keyExtractor={(item) => item.id}
                 />
-                <View style={{ borderBottomColor: '#d4d4d4', borderBottomWidth: 1, marginBottom: 15, marginTop: 50 }} />
+                <View/>
                 </View>
-            </Card>
+
+                <View style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                    <Text style={{fontSize:30, fontWeight:700}}>Search Bills</Text>
+                    <Text style={{marginTop:10}}>Type Somthing for search bills</Text>
+                </View>
+
             </View>
 
 

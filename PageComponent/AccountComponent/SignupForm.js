@@ -112,7 +112,7 @@ const SignupForm = ({ navigation }) => {
         </View>
 
         <View style={{ marginTop: 70, marginBottom: 50 }}>
-          <Text style={{ textAlign: 'center', fontWeight: 400, fontSize: 16 }}>Already have an account? <Text onPress={handlePress}>Log in</Text> </Text>
+          <Text style={{ textAlign: 'center', fontWeight: 400, fontSize: 16 }}>Already have an account? <Text style={{color:'#A18CD1', fontWeight:600, textDecorationLine: 'underline'}} onPress={handlePress}>Log in</Text> </Text>
         </View>
 
       </View>

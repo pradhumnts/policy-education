@@ -5,11 +5,12 @@ import IconMenu from "../../sections/IconMenu";
 import SaveBillCard from "./SaveBillCard";
 import { colors } from "../../Design System/Colors";
 import LikeIcon from "./LikeDisLikeIcon";
+import Swiper from 'react-native-swiper';
 
 const SavedBill = () => {
   const Icondata = [
     {
-      title: "2 Saved",
+      title: "2 Sponsor",
       icon: "home-outline",
     },
     {
@@ -39,13 +40,22 @@ const SavedBill = () => {
         </View>
         <View>
           <View style={{ marginTop: 20 }}>
-            <SaveBillCard
+            {/* <Swiper> */}
+              <SaveBillCard
               color={colors.primary}
               text="H.Con.Res. 5: Expressing support for the Nation’s law enforcement agencies and condemning any efforts to defund or dismantle law enforcement agencies."
               date="Jan 11, 2023"
               sponsor="Steve Scalise"
               share="share-outline"
             />
+            {/* <SaveBillCard
+              color={colors.primary}
+              text="H.Co: Expressing support for the Nation’s law enforcement agencies and condemning any efforts to defund or dismantle law enforcement agencies."
+              date="Jan 11, 2023"
+              sponsor="Steve Scalise"
+              share="share-outline"
+            /> */}
+            {/* </Swiper> */}
           </View>
           <View>
             <LikeIcon />

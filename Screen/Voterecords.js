@@ -63,7 +63,7 @@ const Voterecords = () => {
                 </Text>
             </Card>
             <Card style={{marginTop:20}}>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
             {Recorddata.map((item, index) => (
             <View>
                 <Record item={item} key={index} />

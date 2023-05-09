@@ -62,7 +62,7 @@ const Votedata = [
   },
 ];
 
-const VotingRecords = () => {
+const VotingRecords = ({ navigation }) => {
 
   const [searchValue, setSearchValue] = useState('');
   const [filteredRecords, setFilteredRecords] = useState(Votedata);
@@ -93,7 +93,7 @@ const VotingRecords = () => {
         </View>
         <Card style={{ marginTop: 20 }}><FlatList
           data={filteredRecords}
-          renderItem={({ item }) => <MemberVote item={item} />}
+          renderItem={({ item }) => <MemberVote navigation={navigation} item={item} />}
           keyExtractor={(item) => item.id}
         /></Card>
       </View>

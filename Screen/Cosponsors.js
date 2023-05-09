@@ -87,7 +87,7 @@ const Cosponsors = ({props, navigation}) => {
   }
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.container}>
         <Card Heading="Cosponsors of H.R. 2" style={{marginBottom:20}}>
           <Text style={{ marginVertical: 10 }}>

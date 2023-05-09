@@ -14,7 +14,7 @@ const ProfileComponent = ({props, navigation}) => {
  
     const Icondata = [
         {
-          title: "2 Saved",
+          title: "2 Sponsor",
           icon: "home-outline",
         },
         {

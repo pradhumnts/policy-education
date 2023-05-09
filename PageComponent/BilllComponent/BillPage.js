@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Text, ActivityIndicator } from 'react-native';
 import { View, ScrollView, StyleSheet } from "react-native";
 import BillCard from "../../Design System/BillCard/BillCard";
 import { colors } from "../../Design System/Colors";
@@ -12,6 +13,27 @@ const BillPage = ({ navigation }) => {
   const handleButtonPress = (buttonText) => {
     setSelectedButton(buttonText);
   };
+ 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time with setTimeout
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    // Clear timeout if component unmounts
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>

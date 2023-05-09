@@ -1,7 +1,11 @@
 import { View, StyleSheet, Text, Image } from "react-native";
 import Rangebar from "./Rangebar";
+import ProfileComponent from "../PageComponent/ProfileComponent/ProfileComponent";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-const MemberVote = ({ item }) => {
+const MemberVote = ({ item, navigation }) => {
+
+   
   return (
     <View style={styles.Maincontainer}>
       <View style={styles.container}>
@@ -13,9 +17,12 @@ const MemberVote = ({ item }) => {
             flex: 1,
           }}
         >
-          <View style={{ marginRight: 10 }}>
-            <Image style={styles.Voteimage} source={{ uri: item.image }} />
-          </View>
+          <TouchableWithoutFeedback onPress={() => navigation.push('ProfileComponent')}>
+            <View  style={{ marginRight: 10 }}>
+                <Image   style={styles.Voteimage} source={{ uri: item.image }} />
+            </View>
+          </TouchableWithoutFeedback>
+
           <View style={{ width:"95%" }}>
             <Text
               style={{

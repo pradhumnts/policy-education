@@ -10,6 +10,7 @@ import Records from '../../sections/Record';
 import Listitem from "../../sections/Listitem";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import {Alert, Share, Button} from 'react-native';
 
 
 
@@ -118,13 +119,32 @@ const SponsorProfile = (props) => {
     setFilteredRecords(Recorddata.filter((item) => item.summary.toLowerCase().includes(text.toLowerCase())));
   }
 
-
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
   return (
-    <ScrollView style={{ zIndex: -1 }}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{ zIndex: -1 }}>
       <LinearGradient colors={["#E85187", "#A18CD1"]} style={styles.card}>
         <View style={{ padding: 20 }}>
-          <View style={{ marginTop: 20 }}>
-          <TouchableOpacity
+          <View style={{ marginTop: 20, display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between' }}>
+
+              <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => props.navigation.pop(1)}
               >
@@ -133,6 +153,11 @@ const SponsorProfile = (props) => {
                   style={{ fontSize: 32, color: "white" }}
                 />
               </TouchableOpacity>
+
+              <View style={styles.iconsContainer}>
+                  <Icon onPress={onShare} name="share-outline" style={[styles.icon, { marginRight: 10 }]}/>
+              </View>
+
           </View>
           <View style={styles.Avtarview} >
             <Avatar
@@ -246,7 +271,7 @@ const SponsorProfile = (props) => {
             <View>
               <FlatList
                 data={filteredRecords}
-                renderItem={({ item }) => <Records item={item} />}
+                renderItem={({ item }) => <Records navigation={props.navigation} item={item} />}
                 keyExtractor={(item) => item.id}
               />
             </View>
@@ -262,6 +287,17 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     paddingBottom: 50
+  },
+  iconsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+  },
+  icon: {
+    fontSize: 30,
+    color: "white",
   },
   bullet: {
     backgroundColor: "white",

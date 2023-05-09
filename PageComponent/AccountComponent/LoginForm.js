@@ -104,12 +104,13 @@ const LoginForm = ({ navigation }) => {
               marginTop: 10,
             }}
           >
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            {/* <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Switch value={rememberMe} onValueChange={setRememberMe} />
               <Text style={{ marginLeft: 10, color: "#707070" }}>
                 Remember me
               </Text>
-            </View>
+            </View> */}
+            <View></View>
             <Text style={{ color: "#707070" }} onPress={handleForgotPass}>Forgot Password ?</Text>
           </View>
 
@@ -149,7 +150,7 @@ const LoginForm = ({ navigation }) => {
         <View style={{ marginTop: 70, marginBottom: 50 }}>
           <Text style={{ textAlign: "center", fontWeight: 400, fontSize: 16 }}>
           
-            Don't have an account? <Text onPress={handlePress}>Sign Up</Text>
+            Don't have an account? <Text style={{color:'#A18CD1', fontWeight:600, textDecorationLine: 'underline'}} onPress={handlePress}>Sign Up</Text>
           </Text>
         </View>
       </View>

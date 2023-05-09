@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 import OutlinedButton from "../Buttons/OutlinedButton";
 import Icon from "react-native-vector-icons/Ionicons";
 import * as Animatable from "react-native-animatable";
-import { colors } from "../Colors";
+import { colors } from "../Colors"; 
+import {Alert, Share, Button} from 'react-native';
 
 const BillCard = (props) => {
   const [billSaved, setBillSaved] = useState(true);
@@ -14,6 +15,28 @@ const BillCard = (props) => {
 
   const { width, height } = Dimensions.get('window');
   console.log(height)
+
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
   return (
     <Animatable.View
       animation={props.backgroundColor ? "bounceIn" : undefined}
@@ -23,7 +46,7 @@ const BillCard = (props) => {
       <View style={styles.cardHeader}>
         <Text style={styles.cardHeaderText}>Bill</Text>
         <View style={styles.iconsContainer}>
-          <Icon
+          <Icon onPress={onShare}
             name={props.share}
             style={[styles.icon, { marginRight: 10 }]}
           />

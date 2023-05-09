@@ -18,7 +18,7 @@ import AuthContext from './context/AuthContext';
 
 export default function App() {
  
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   
 
   return (

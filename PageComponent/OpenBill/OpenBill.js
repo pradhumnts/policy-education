@@ -239,7 +239,7 @@ const OpenBill = (props) => {
       {isTwitterSection && (
         <TwitterSection setIsTwitterSection={setIsTwitterSection} shares="32 Shares" />
       )}
-      <ScrollView style={{ zIndex: -1 }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ zIndex: -1 }}>
         <LinearGradient style={styles.card} colors={["#FFAABE", "#A18CD1"]}>
           <View style={{ padding: 20 }}>
             <View

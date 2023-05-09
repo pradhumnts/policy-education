@@ -13,7 +13,11 @@ import Search from "../Screen/Search";
 import LoginForm from "../PageComponent/AccountComponent/LoginForm";
 import SignupForm from "../PageComponent/AccountComponent/SignupForm";
 import ForgotPassword from "../PageComponent/AccountComponent/ForgotPassword";
+import ResetPassword from "../PageComponent/AccountComponent/ResetPassword";
 import SponsorProfile from "../PageComponent/SponsorProfile/SponsorProfile";
+import Voterecords from "../Screen/Voterecords";
+import MemberVote from "../sections/MemberVote";
+import Record from "../sections/Record";
 
 const MainTab = createBottomTabNavigator();
 const MainStack = createStackNavigator();
@@ -54,10 +58,14 @@ function StackNavigation() {
       />
 
       <MainStack.Screen name="Bill" options={{ headerShown: false, tabBarVisible: false }} component={OpenBill} />
+      <MainStack.Screen name="BillPage" options={{ headerShown: false, tabBarVisible: false }} component={BillPage} />
+      <MainStack.Screen name="OpenBill" options={{ headerShown: false, tabBarVisible: false }} component={OpenBill} />
       <MainStack.Screen name="Cosponsors" options={{ tabBarVisible: false }} component={Cosponsors} />
       <MainStack.Screen name="VotingRecords" options={{ tabBarVisible: false }} component={VotingRecords} />
+      <MainStack.Screen name="Voterecords" options={{ tabBarVisible: false }} component={Voterecords} />
       <MainStack.Screen name="SponsorProfile" options={{ headerShown: false, tabBarVisible: false }} component={SponsorProfile} />
-      
+      <MainStack.Screen name="Search" options={{ headerShown: false, tabBarVisible: false }} component={Search} />
+      <MainStack.Screen name="ProfileComponent" options={{ headerShown: false, tabBarVisible: false }} component={ProfileComponent} />
 
     </MainStack.Navigator>
   );
@@ -69,6 +77,7 @@ export function AuthNavigation() {
         <AuthStack.Screen name="Login" options={{ tabBarVisible: false, headerShown: false }} component={LoginForm} />
         <AuthStack.Screen name="Signup" options={{ tabBarVisible: false, headerShown: false }} component={SignupForm} />
         <AuthStack.Screen name="ForgotPassword" options={{ tabBarVisible: false, headerShown: false }} component={ForgotPassword} />
+        <AuthStack.Screen name="ResetPassword" options={{ tabBarVisible: false, headerShown: false }} component={ResetPassword} />
     </AuthStack.Navigator>
 
   )
